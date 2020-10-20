@@ -1,0 +1,14 @@
+{
+  "suggest.detailMaxLength": 160,
+  "suggest.maxPreviewWidth": 160,
+  "diagnostic.maxWindowWidth": 160,
+  "signature.floatMaxWidth": 160,
+  "diagnostic.maxWindowHeight": 16,
+  "signature.maxWindowHeight": 16,
+  "coc.preferences.previewMaxHeight": 16,
+  "tsserver.npm": "/usr/local/bin/npm",
+  "tsserver.enableJavascript": false,
+  "coc.preferences.hoverTarget": "float",
+  "signature.preferShownAbove": true,
+  "signature.target": "float"
+}
