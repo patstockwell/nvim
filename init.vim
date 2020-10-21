@@ -161,6 +161,12 @@ augroup TrailingWhiteSpace
   autocmd BufWinLeave * call clearmatches()
 augroup end
 
+" Add automatic folding to vim files
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
+augroup END
+
 " ** NETRW **
 let g:netrw_preview = 1 " show the preview window in a horizontal split
 let g:netrw_alto = 1 " change from above splitting to below splitting
