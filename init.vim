@@ -359,10 +359,10 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_skip_empty_sections = 1 "this hides the ugly orange warning triangle
-" the separator used on the left side
 let g:airline_left_sep=''
-" the separator used on the right side
 let g:airline_right_sep=''
+let g:airline_right_alt_sep = '╱'
+let g:airline_left_alt_sep = '╲'
 nmap <leader>- <Plug>AirlineSelectPrevTab
 nmap <leader>= <Plug>AirlineSelectNextTab
 
