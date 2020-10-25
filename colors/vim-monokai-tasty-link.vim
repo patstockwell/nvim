@@ -1,1 +1,0 @@
-/Users/patstockwell/source-code/vimstuff/vim-monokai-tasty/colors/vim-monokai-tasty.vim
