@@ -85,8 +85,12 @@ set splitbelow                                " default position for new window 
 set splitright                                " default position for new window when splitting vertically
 set showcmd                                   " show keystrokes of a (partial) command in the last line of the screen
 set noshowmode                                " do not show the mode in the status bar (airline handles this)
-set nofoldenable                              " allow folding to be used, but by default, open folds on new files
 set hidden                                    " allow buffers to be unsaved while in the background.
+"-- FOLDING --
+set nofoldenable                              " allow folding to be used, but by default, open folds on new files
+set foldmethod=indent                         " syntax highlighting items specify folds
+set foldcolumn=0                              " hides the folding column. Defines 0 col at window left, to indicate folding
+set foldlevelstart=99                         " start file with all folds opened
 
 " use ripgrep to search
 " --vim-grep - outputs a vim friendly formatted response
