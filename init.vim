@@ -50,9 +50,8 @@ Plug 'rbong/vim-flog'
 " vimscript testing framework
 Plug 'junegunn/vader.vim'
 
-" fuzzy find files
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+" ctrl-p - fuzzy file search across current directory
+Plug 'ctrlpvim/ctrlp.vim'
 
 " change the working directory to the project root when opening a file/directory
 Plug 'airblade/vim-rooter'
@@ -183,12 +182,13 @@ let g:netrw_browse_split = 0 " open a file in the same window as the explorer
 " --------------------------------------------
 " --------------------------------------------
 
-" ** FZF PLUGIN **
-
- command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview(), <bang>0)
+" ** CTRL-P PLUGIN **
+let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_by_filename = 0
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_match_current_file = 1
+" set most recently used files as the first option
+let g:ctrlp_types = ['mru', 'fil', 'buf']
 
 " ** VIMWIKI PLUGIN **
 let g:vimwiki_table_mappings = 0 " unbinds TAB so it can be used for completion
@@ -421,8 +421,6 @@ nnoremap <leader>s *:SearchCurrentWord<cr>
 nnoremap <leader>t :Grep TODO<CR>
 " Find all the highlights in the journal
 nnoremap <leader>w<leader>h :Grep ❤️ <CR>
-" Open FZF for fuzzy search of files
-silent! nmap <C-P> :GFiles<CR>
 " Get syntax highlight stack trace
 nnoremap <F10> :echomsg
       \ 'hi<'
