@@ -212,7 +212,7 @@ let g:NERDTreeSyntaxDisableDefaultExactMatches = 1
 let g:cursorhold_updatetime = 100
 
 " ** CTRL-P PLUGIN **
-let g:ctrlp_cmd = 'CtrlPMixed'
+" let g:ctrlp_cmd = 'CtrlPMixed' " use mixed as the default setting
 let g:ctrlp_by_filename = 0
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_match_current_file = 1
