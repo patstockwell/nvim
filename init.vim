@@ -32,6 +32,9 @@ Plug 'henrik/vim-indexed-search'
 " status bar and tabline
 Plug 'vim-airline/vim-airline'
 
+" quickfix and location list
+Plug 'romainl/vim-qf'
+
 " quoting/parentheses
 Plug 'tpope/vim-surround'
 " common vim default settings in a plugin
