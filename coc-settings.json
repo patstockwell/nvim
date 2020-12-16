@@ -1,4 +1,7 @@
 {
+  "http.proxy": "",
+  "http.proxyAuthorization": null,
+  "http.proxyStrictSSL": false,
   "typescript.preferences.quoteStyle": "single",
   "typescript.preferences.importModuleSpecifier": "relative",
   "javascript.suggestionActions.enabled": false,

@@ -220,7 +220,7 @@ let g:ctrlp_by_filename = 0
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_match_current_file = 1
 " set most recently used files as the first option
-let g:ctrlp_types = ['mru', 'fil', 'buf']
+let g:ctrlp_types = ['fil', 'buf', 'mru']
 
 " ** VIMWIKI PLUGIN **
 let g:vimwiki_table_mappings = 0 " unbinds TAB so it can be used for completion
