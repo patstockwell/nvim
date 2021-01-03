@@ -428,6 +428,7 @@ command! Gup :G pull --rebase
 command! -nargs=+ -complete=file_in_path Grep cgetexpr cake#grep(<f-args>)
 command! SearchCurrentWord cgetexpr cake#searchWordUnderTheCursor()
 command! Json %!python -m json.tool
+command! Sort call cake#sortqf()
 
 " ============ Custom Maps ==============
 " The character to start wild card expansion (eg completion menu when file

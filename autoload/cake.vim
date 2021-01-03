@@ -6,6 +6,26 @@ function! cake#highlightTrailingWhiteSpace(pattern)
   endif
 endfunction
 
+function! s:sortCompare(x, y)
+  let x_name = bufname(a:x.bufnr)
+  let y_name = bufname(a:y.bufnr)
+
+  if x_name < y_name
+    return -1
+  elseif x_name > y_name
+    return 1
+  else
+    return 0
+  else
+endfunction
+
+function! cake#sortqf()
+  let qflist = copy(getqflist())
+  call sort(qflist)
+  call sort(qflist, function('s:sortCompare'))
+  call setqflist(qflist)
+endfunction
+
 " https://gist.github.com/romainl/56f0c28ef953ffc157f36cc495947ab3
 function! cake#grep(...)
   let grepProgram = [&grepprg]
