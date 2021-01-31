@@ -152,6 +152,8 @@ set conceallevel=0                            " don't conceal any characters
 set autoread                                  " automatically reread a file when it has been changed outside of vim. eg with Git.
 set noswapfile                                " turn off creation of temp files
 set spelllang=en_gb                           " Set spell check to British English
+set wrap                                      " soft wrap long lines (no actual line break but avoids horizontal overflow)
+set linebreak                                 " wrap lines at a character in the `breakat` option (try :set breakat?)
 
 filetype on                                   " detect the type of file being edited
 filetype plugin on                            " load additional plugins for that filetype. Eg. ~/.vim/ftplugin/python.vim
