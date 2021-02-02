@@ -348,7 +348,7 @@ augroup typescriptGroup
   " Format comments in .json files
   autocmd FileType json syntax match Comment +\/\/.\+$+
   " tsconfig.json is actually jsonc, help TypeScript set the correct filetype
-  autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
+  autocmd BufRead,BufNewFile tsconfig.*json set filetype=jsonc
 
   autocmd BufNewFile,BufRead *.tsx let b:tsx_ext_found = 1
   autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
