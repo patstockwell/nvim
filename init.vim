@@ -259,13 +259,6 @@ augroup FernEvents
   autocmd FileType fern call FernInit()
 augroup END
 
-" ** NERDTREE PLUGIN - (mnemonic: Files) **
-" let g:NERDTreeLimitedSyntax = 1
-" nnoremap <leader>f :NERDTreeToggle<CR>
-" nnoremap <leader>F :NERDTreeFind<CR>
-" let NERDTreeShowHidden=1 " show hidden files in the file tree
-" let g:NERDTreeSyntaxDisableDefaultExactMatches = 1
-
 " ** FIXCURSORHOLD PLUGIN **
 " in millisecond, used for both CursorHold and CursorHoldI,
 " use updatetime instead if not defined
