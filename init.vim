@@ -171,7 +171,9 @@ augroup TrailingWhiteSpace
   " Clear the autocommands of the current group to prevent them from piling
   " up each time you reload your vimrc.
   autocmd!
-  autocmd BufWinEnter * call cake#highlightTrailingWhiteSpace('\s\+$')
+  " filetypes that shouldn't have highlighted whitespace
+  let blocklist = ['help', 'fern']
+  autocmd BufWritePre * if index(blocklist, &ft) < 0 | call cake#highlightTrailingWhiteSpace('\s\+$')
   " the following pattern will match trailing whitespace, except when typing at the end of a line.
   autocmd InsertEnter * call cake#highlightTrailingWhiteSpace('\s\+\%#\@<!$')
   autocmd InsertLeave * call cake#highlightTrailingWhiteSpace('\s\+$')
