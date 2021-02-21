@@ -94,7 +94,6 @@ set ttimeoutlen=100                           " decrease timeout for faster inse
 set mouse=a                                   " allow the mouse to be used
 set cursorline                                " highlight the line number
 set colorcolumn=81                            " highlight the 81st column for text width
-set splitbelow                                " default position for new window when splitting horizontally
 set splitright                                " default position for new window when splitting vertically
 set showcmd                                   " show keystrokes of a (partial) command in the last line of the screen
 set noshowmode                                " do not show the mode in the status bar (airline handles this)
