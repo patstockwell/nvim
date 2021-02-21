@@ -70,8 +70,8 @@ Plug 'lambdalisue/fern-hijack.vim'
 " change the working directory to the project root when opening a file/directory
 Plug 'airblade/vim-rooter'
 
-" Help for debugging the vim syntax stack
-" Plug 'kergoth/vim-hilinks'
+" run tests
+Plug 'vim-test/vim-test'
 
 call plug#end()
 
