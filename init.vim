@@ -57,10 +57,6 @@ Plug 'junegunn/vader.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ryanoasis/vim-devicons'
 
-" Filetree view of current directory
-" Plug 'scrooloose/nerdtree'
-" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-
 " File tree explorer
 Plug 'lambdalisue/fern.vim'
 " Needed neovim fix for fern.vim and coc.nvim
@@ -188,10 +184,6 @@ augroup filetype_vim
     autocmd!
     autocmd FileType vim setlocal foldmethod=marker
 augroup END
-augroup my-glyph-palette
-    autocmd! *
-    autocmd FileType fern call glyph_palette#apply()
-augroup END
 
 
 " ** NETRW **
@@ -259,7 +251,6 @@ endfunction
 augroup my-glyph-palette
   autocmd! *
   autocmd FileType fern call glyph_palette#apply()
-  autocmd FileType nerdtree,startify call glyph_palette#apply()
 augroup END
 
 augroup FernEvents
