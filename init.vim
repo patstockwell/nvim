@@ -73,6 +73,12 @@ Plug 'airblade/vim-rooter'
 " run tests
 Plug 'vim-test/vim-test'
 
+" Distraction free writing
+Plug 'junegunn/goyo.vim'
+
+" Help for debugging the vim syntax stack
+" Plug 'kergoth/vim-hilinks'
+
 call plug#end()
 
 let g:python_highlight_all = 1
@@ -172,7 +178,7 @@ augroup TrailingWhiteSpace
   " up each time you reload your vimrc.
   autocmd!
   " filetypes that shouldn't have highlighted whitespace
-  let blocklist = ['help', 'fern']
+  let blocklist = ['floggraph', 'help', 'fern']
   autocmd BufWritePre * if index(blocklist, &ft) < 0 | call cake#highlightTrailingWhiteSpace('\s\+$')
   " the following pattern will match trailing whitespace, except when typing at the end of a line.
   autocmd InsertEnter * call cake#highlightTrailingWhiteSpace('\s\+\%#\@<!$')
@@ -424,12 +430,6 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
-" ** VIM-FLOG PLUGIN **
-augroup VimFlogRemoveTrailingWhitespaceHightlight
-  autocmd!
-  autocmd FileType floggraph call clearmatches()
-augroup end
-
 " ** VIM-INDEXED-SEARCH PLUGIN **
 let g:indexed_search_colors = 0
 
@@ -456,9 +456,9 @@ nmap <leader>= <Plug>AirlineSelectNextTab
 " Open the location/quickfix window automatically if cgetexpr function is used
 " https://gist.github.com/romainl/56f0c28ef953ffc157f36cc495947ab3
 augroup quickfix
-    autocmd!
-    autocmd QuickFixCmdPost cgetexpr cwindow
-    autocmd QuickFixCmdPost lgetexpr lwindow
+  autocmd!
+  autocmd QuickFixCmdPost cgetexpr cwindow
+  autocmd QuickFixCmdPost lgetexpr lwindow
 augroup end
 
 " =========== Custom commands. =============
