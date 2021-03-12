@@ -64,11 +64,6 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'lambdalisue/fern.vim'
 " Needed neovim fix for fern.vim and coc.nvim
 Plug 'antoinemadec/FixCursorHold.nvim'
-" Dev icons for fern's file tree explorer
-Plug 'lambdalisue/nerdfont.vim'
-Plug 'lambdalisue/fern-renderer-nerdfont.vim'
-Plug 'lambdalisue/glyph-palette.vim'
-Plug 'lambdalisue/fern-hijack.vim'
 
 " change the working directory to the project root when opening a file/directory
 Plug 'airblade/vim-rooter'
@@ -236,59 +231,6 @@ let g:webdevicons_enable_airline_tabline = 1
 " adding the flags to NERDTree
 let g:webdevicons_enable_nerdtree = 1
 
-" ** FERN PLUGIN **
-let g:fern#renderer = "nerdfont"
-let g:fern#disable_default_mappings = 1
-let g:fern#disable_drawer_smart_quit = 1
-let g:fern#default_hidden = 1
-
-" ** FIXCURSORHOLD PLUGIN **
-" in millisecond, used for both CursorHold and CursorHoldI,
-" use updatetime instead if not defined
-let g:cursorhold_updatetime = 100
-
-
-noremap <silent> <Leader>f :Fern . -drawer -reveal=% -width=35 -toggle<CR><C-w>=
-
-function! FernInit() abort
-  nmap <buffer><expr>
-        \ <Plug>(fern-my-open-expand-collapse)
-        \ fern#smart#leaf(
-        \   "\<Plug>(fern-action-open:select)",
-        \   "\<Plug>(fern-action-expand)",
-        \   "\<Plug>(fern-action-collapse)",
-        \ )
-  nmap <buffer> <CR> <Plug>(fern-my-open-expand-collapse)
-  nmap <buffer> <2-LeftMouse> <Plug>(fern-my-open-expand-collapse)
-  nmap <buffer> m <Plug>(fern-action-mark:toggle)j
-  nmap <buffer> N <Plug>(fern-action-new-file)
-  nmap <buffer> K <Plug>(fern-action-new-dir)
-  nmap <buffer> D <Plug>(fern-action-remove)
-  nmap <buffer> V <Plug>(fern-action-move)
-  nmap <buffer> R <Plug>(fern-action-rename)
-  nmap <buffer> s <Plug>(fern-action-open:split)
-  nmap <buffer> v <Plug>(fern-action-open:vsplit)
-  nmap <buffer> r <Plug>(fern-action-reload)
-  nmap <buffer> <nowait> d <Plug>(fern-action-hidden:toggle)
-  nmap <buffer> <nowait> < <Plug>(fern-action-leave)
-  nmap <buffer> <nowait> > <Plug>(fern-action-enter)
-endfunction
-
-augroup my-glyph-palette
-  autocmd! *
-  autocmd FileType fern call glyph_palette#apply()
-augroup END
-
-augroup FernEvents
-  autocmd!
-  autocmd FileType fern call FernInit()
-augroup END
-
-" ** FIXCURSORHOLD PLUGIN **
-" in millisecond, used for both CursorHold and CursorHoldI,
-" use updatetime instead if not defined
-let g:cursorhold_updatetime = 100
-
 " ** CTRL-P PLUGIN **
 " let g:ctrlp_cmd = 'CtrlPMixed' " use mixed as the default setting
 let g:ctrlp_by_filename = 0
@@ -354,6 +296,11 @@ map <Plug> <Plug>Markdown_MoveToCurHeader
 let g:instant_markdown_autostart = 0
 
 " ** COC.NVIM PLUGIN **
+
+" in millisecond, used for both CursorHold and CursorHoldI,
+" use updatetime instead if not defined
+let g:cursorhold_updatetime = 100
+
 " List of extensions to use with coc.nvim
 call coc#add_extension('coc-json', 'coc-tsserver', 'coc-tslint-plugin', 'coc-eslint')
 
