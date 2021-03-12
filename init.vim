@@ -216,7 +216,7 @@ augroup dirvish_config
   autocmd FileType dirvish silent! unmap <buffer> a
   autocmd FileType dirvish nnoremap md :mkdir! %
   autocmd FileType dirvish nnoremap mf :e %
-  " autocmd FileType dirvish nnoremap rn :mv! % %
+  " for renaming files, use :G move <TAB> ./
 augroup END
 
 " ** DEVICONS PLUGIN **
