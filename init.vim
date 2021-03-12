@@ -214,6 +214,7 @@ augroup dirvish_config
   autocmd FileType dirvish silent! unmap <buffer> i
   autocmd FileType dirvish silent! unmap <buffer> o
   autocmd FileType dirvish silent! unmap <buffer> a
+  autocmd FileType dirvish silent! unmap <buffer> p
   autocmd FileType dirvish nnoremap md :mkdir! %
   autocmd FileType dirvish nnoremap mf :e %
   " for renaming files, use :G move <TAB> ./
