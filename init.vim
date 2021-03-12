@@ -47,6 +47,9 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
 " git inside vim
 Plug 'tpope/vim-fugitive'
+" Improve netrw
+Plug 'tpope/vim-vinegar'
+
 " git log inside vim
 Plug 'rbong/vim-flog'
 
