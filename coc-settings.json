@@ -5,18 +5,6 @@
   "typescript.preferences.quoteStyle": "single",
   "typescript.preferences.importModuleSpecifier": "relative",
   "javascript.suggestionActions.enabled": false,
-  "prettier.eslintIntegration": true,
-  "prettier.disableLanguages": [
-    "vue",
-    "ts",
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "json",
-    "graphql",
-    "js"
-  ],
   "suggest.detailMaxLength": 160,
   "suggest.maxPreviewWidth": 160,
   "diagnostic.maxWindowWidth": 160,
