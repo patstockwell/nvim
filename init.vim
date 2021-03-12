@@ -73,6 +73,9 @@ Plug 'lambdalisue/fern-hijack.vim'
 " change the working directory to the project root when opening a file/directory
 Plug 'airblade/vim-rooter'
 
+" File explorer
+Plug 'justinmk/vim-dirvish'
+
 " run tests
 Plug 'vim-test/vim-test'
 
@@ -205,6 +208,21 @@ let g:netrw_browse_split = 0 " open a file in the same window as the explorer
 " ----                                    ----
 " --------------------------------------------
 " --------------------------------------------
+
+" ** VIM-DIRVISH
+let g:dirvish_mode = ':sort ,^.*[\/],'
+noremap <silent> <Leader>f :Dirvish<cr>
+noremap <silent> <Leader>F :Dirvish %<cr>
+augroup dirvish_config
+  autocmd!
+  autocmd FileType dirvish silent! unmap <buffer> <C-p>
+  autocmd FileType dirvish silent! unmap <buffer> i
+  autocmd FileType dirvish silent! unmap <buffer> o
+  autocmd FileType dirvish silent! unmap <buffer> a
+  autocmd FileType dirvish nnoremap md :mkdir! %
+  autocmd FileType dirvish nnoremap mf :e %
+  " autocmd FileType dirvish nnoremap rn :mv! % %
+augroup END
 
 " ** DEVICONS PLUGIN **
 " " loading the plugin
