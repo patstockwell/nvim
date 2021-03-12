@@ -73,9 +73,6 @@ Plug 'airblade/vim-rooter'
 " run tests
 Plug 'vim-test/vim-test'
 
-" Distraction free writing
-Plug 'junegunn/goyo.vim'
-
 " Help for debugging the vim syntax stack
 " Plug 'kergoth/vim-hilinks'
 
