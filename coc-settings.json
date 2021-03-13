@@ -12,7 +12,7 @@
   "signature.maxWindowHeight": 16,
   "coc.preferences.previewMaxHeight": 16,
   "tsserver.npm": "/usr/local/bin/npm",
-  "tsserver.enableJavascript": false,
+  "tsserver.enableJavascript": true,
   "coc.preferences.hoverTarget": "float",
   "signature.preferShownAbove": true,
   "signature.target": "float"
