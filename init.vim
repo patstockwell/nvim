@@ -1,6 +1,6 @@
 " Plugins
 call plug#begin(stdpath('data') . '/plugged')
-
+" {{{
 " Colour scheme
 Plug 'patstockwell/vim-monokai-tasty'
 
@@ -76,7 +76,7 @@ Plug 'vim-test/vim-test'
 
 " Help for debugging the vim syntax stack
 " Plug 'kergoth/vim-hilinks'
-
+"}}}
 call plug#end()
 
 let g:python_highlight_all = 1
