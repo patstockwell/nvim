@@ -1,1 +1,3 @@
-setlocal foldmethod=marker " Add automatic folding to vim files
+setlocal foldmethod=marker " Use triple braces to mark folded sections
+setlocal foldlevelstart=0 " Automatically fold any marked sections 3 braces
+echomsg 'This does not show. Why?'
