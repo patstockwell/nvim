@@ -79,11 +79,11 @@ Plug 'vim-test/vim-test'
 "}}}
 call plug#end()
 
-let g:python_highlight_all = 1
-
 " Set the <leader> key
 let mapleader = ";"
 
+" Vim standard options
+"{{{
 syntax on                                     " turn on syntax highlighting
 let g:vim_monokai_tasty_italic = 1            " allow italics in the vim-monokai-tasty colorscheme
 colorscheme vim-monokai-tasty                 " set the colorscheme
@@ -108,6 +108,34 @@ set foldmethod=indent                         " syntax highlighting items specif
 set foldcolumn=0                              " hides the folding column. Defines 0 col at window left, to indicate folding
 set foldlevelstart=99                         " start file with all folds opened
 
+" tabs and indentation are often treated as the same thing, but they can have different values.
+" The following commands allow the widths of a tab and the indentation level to be set
+set autoindent                                " start a new line based on previous line indentation
+set smartindent                               " indent a line after '{' or before '}'
+set shiftround                                " round up the indent to a multiple of shiftwidth
+set expandtab                                 " use spaces to insert a <TAB> character in insert mode
+set tabstop=2                                 " the number of columns in a 'real' <TAB> character
+set shiftwidth=2                              " the number of columns to use for autoindent and '<<' '>>'
+set smarttab                                  " when the tab key is used at the start of a line, 'shiftwidth' is used instead of 'tabstop'
+set nopaste                                   " nvim allows pasting from the clipboard by default. This just stops tab settings resetting
+set backspace=indent,eol,start                " allow backspace to work across line breaks and indents
+set number                                    " turn on line numbers
+set conceallevel=0                            " don't conceal any characters
+set autoread                                  " automatically reread a file when it has been changed outside of vim. eg with Git.
+set noswapfile                                " turn off creation of temp files
+set spelllang=en_gb                           " Set spell check to British English
+set wrap                                      " soft wrap long lines (no actual line break but avoids horizontal overflow)
+set linebreak                                 " wrap lines at a character in the `breakat` option (try :set breakat?)
+set undofile                                  " Make vim remember undos, even when the file is closed!
+set undolevels=1000                           " How many undos
+set undoreload=10000                          " number of lines to save for undo
+
+filetype on                                   " detect the type of file being edited
+filetype plugin on                            " load additional plugins for that filetype. Eg. ~/.vim/ftplugin/python.vim
+"}}}
+
+" Grep/Search options
+"{{{
 " use ripgrep to search
 " --vim-grep - outputs a vim friendly formatted response
 " --smart-case - case insensitve for all lowercase, case sensitive otherwise
@@ -140,34 +168,10 @@ set wildignore+=*/architecture/*
 set wildignore+=*/*.xml
 set wildignore+=*/node_modules/*
 set wildignore+=*/.git/*
-
-set undofile                                  " Make vim remember undos, even when the file is closed!
-set undolevels=1000                           " How many undos
-set undoreload=10000                          " number of lines to save for undo
-
-" tabs and indentation are often treated as the same thing, but they can have different values.
-" The following commands allow the widths of a tab and the indentation level to be set
-set autoindent                                " start a new line based on previous line indentation
-set smartindent                               " indent a line after '{' or before '}'
-set shiftround                                " round up the indent to a multiple of shiftwidth
-set expandtab                                 " use spaces to insert a <TAB> character in insert mode
-set tabstop=2                                 " the number of columns in a 'real' <TAB> character
-set shiftwidth=2                              " the number of columns to use for autoindent and '<<' '>>'
-set smarttab                                  " when the tab key is used at the start of a line, 'shiftwidth' is used instead of 'tabstop'
-set nopaste                                   " nvim allows pasting from the clipboard by default. This just stops tab settings resetting
-set backspace=indent,eol,start                " allow backspace to work across line breaks and indents
-set number                                    " turn on line numbers
-set conceallevel=0                            " don't conceal any characters
-set autoread                                  " automatically reread a file when it has been changed outside of vim. eg with Git.
-set noswapfile                                " turn off creation of temp files
-set spelllang=en_gb                           " Set spell check to British English
-set wrap                                      " soft wrap long lines (no actual line break but avoids horizontal overflow)
-set linebreak                                 " wrap lines at a character in the `breakat` option (try :set breakat?)
-
-filetype on                                   " detect the type of file being edited
-filetype plugin on                            " load additional plugins for that filetype. Eg. ~/.vim/ftplugin/python.vim
+"}}}
 
 " highlight trailing spaces in annoying red
+"{{{
 highlight ExtraWhitespace ctermbg=1 guibg=red
 match ExtraWhitespace /\s\+$/
 
@@ -183,11 +187,14 @@ augroup TrailingWhiteSpace
   autocmd InsertLeave * call cake#highlightTrailingWhiteSpace('\s\+$')
   autocmd BufWinLeave * call clearmatches()
 augroup end
+"}}}
 
 " ** NETRW **
+"{{{
 let g:netrw_preview = 1 " show the preview window in a horizontal split
 let g:netrw_alto = 1 " change from above splitting to below splitting
 let g:netrw_browse_split = 0 " open a file in the same window as the explorer
+"}}}
 
 " --------------------------------------------
 " --------------------------------------------
@@ -198,6 +205,7 @@ let g:netrw_browse_split = 0 " open a file in the same window as the explorer
 " --------------------------------------------
 
 " ** VIM-DIRVISH
+"{{{
 let g:dirvish_mode = ':sort ,^.*[\/],'
 noremap <silent> <Leader>f :Dirvish<cr>
 noremap <silent> <Leader>F :Dirvish %<cr>
@@ -212,8 +220,10 @@ augroup dirvish_config
   autocmd FileType dirvish nnoremap mf :e %
   " for renaming files, use :G move <TAB> ./
 augroup END
+"}}}
 
 " ** DEVICONS PLUGIN **
+"{{{
 " " loading the plugin
 let g:webdevicons_enable = 1
 " adding to vim-airline's statusline
@@ -224,16 +234,20 @@ let g:webdevicons_enable_ctrlp = 1
 let g:webdevicons_enable_airline_tabline = 1
 " adding the flags to NERDTree
 let g:webdevicons_enable_nerdtree = 1
+"}}}
 
 " ** CTRL-P PLUGIN **
+"{{{
 " let g:ctrlp_cmd = 'CtrlPMixed' " use mixed as the default setting
 let g:ctrlp_by_filename = 0
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_match_current_file = 1
 " set most recently used files as the first option
 let g:ctrlp_types = ['fil', 'buf', 'mru']
+"}}}
 
 " ** VIMWIKI PLUGIN **
+"{{{
 let g:vimwiki_table_mappings = 0 " unbinds TAB so it can be used for completion
 let g:vimwiki_use_calendar = 1
 let g:vimwiki_global_ext = 0
@@ -255,8 +269,10 @@ let g:vimwiki_list = [wiki]
 " This is needed according to the vimwiki docs. Neovim is always
 " 'nocompatible', but it is set here for completeness.
 set nocompatible
+"}}}
 
 " ** CALENDAR PLUGIN **
+"{{{
 let g:calendar_mark = 'left-fit'
 let g:calendar_monday = 1
 let g:calendar_filetype = 'markdown'
@@ -284,13 +300,15 @@ let g:vim_markdown_follow_anchor = 1 " use `ge` to follow a link to another file
 let g:vim_markdown_conceal_code_blocks = 0 " show codeblock wrapping ```
 " remove default mapping for Markdown_MoveToCurHeader which is `]c`
 map <Plug> <Plug>Markdown_MoveToCurHeader
+"}}}
 
 " ** VIM INSTANT MARKDOWN PLUGIN **
-"Uncomment to override defaults -->
+"{{{
 let g:instant_markdown_autostart = 0
+"}}}
 
 " ** COC.NVIM PLUGIN **
-
+"{{{
 " in millisecond, used for both CursorHold and CursorHoldI,
 " use updatetime instead if not defined
 let g:cursorhold_updatetime = 100
@@ -353,21 +371,6 @@ endfunction
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
 
-augroup typescriptGroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setlocal formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-  " Format comments in .json files
-  autocmd FileType json syntax match Comment +\/\/.\+$+
-  " tsconfig.json is actually jsonc, help TypeScript set the correct filetype
-  autocmd BufRead,BufNewFile tsconfig.*json set filetype=jsonc
-
-  autocmd BufNewFile,BufRead *.tsx let b:tsx_ext_found = 1
-  autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
-augroup end
-
 " use `:OR` for organize import of current buffer
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
@@ -388,18 +391,25 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+"}}}
 
 " ** VIM-INDEXED-SEARCH PLUGIN **
+"{{{
 let g:indexed_search_colors = 0
+"}}}
 
 " ** COC-PRETTIER PLUGIN **
+"{{{
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+"}}}
 
 " ** VIM-JSON PLUGIN **
+"{{{
 let g:vim_json_syntax_conceal = 0 " don't conceal json quotes
+"}}}
 
 " ** VIM-AIRLINE PLUGIN **
-" airline theme
+"{{{
 let g:airline_theme='monokai_tasty'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -411,6 +421,7 @@ let g:airline_right_alt_sep = '╱'
 let g:airline_left_alt_sep = '╲'
 nmap <leader>- <Plug>AirlineSelectPrevTab
 nmap <leader>= <Plug>AirlineSelectNextTab
+"}}}
 
 " Open the location/quickfix window automatically if cgetexpr function is used
 " https://gist.github.com/romainl/56f0c28ef953ffc157f36cc495947ab3
@@ -420,7 +431,23 @@ augroup quickfix
   autocmd QuickFixCmdPost lgetexpr lwindow
 augroup end
 
+augroup typescriptGroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setlocal formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+  " Format comments in .json files
+  autocmd FileType json syntax match Comment +\/\/.\+$+
+  " tsconfig.json is actually jsonc, set the correct filetype to allow comments
+  autocmd BufRead,BufNewFile tsconfig.*json set filetype=jsonc
+
+  autocmd BufNewFile,BufRead *.tsx let b:tsx_ext_found = 1
+  autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
+augroup end
+
 " =========== Custom commands. =============
+"{{{
 " The bang '!' will overwrite whatever command previously used that name. This
 " makes it safe to reload a script.
 " `What` will print out the syntax group that the cursor is currently above.
@@ -439,8 +466,10 @@ command! -nargs=+ -complete=file_in_path Grep cgetexpr cake#grep(<f-args>)
 command! SearchCurrentWord cgetexpr cake#searchWordUnderTheCursor()
 command! Json %!python -m json.tool
 command! Sort call cake#sortqf()
+"}}}
 
 " ============ Custom Maps ==============
+"{{{
 " The character to start wild card expansion (eg completion menu when file
 " searching). This is normally <TAB> by default, but in a mapping, that
 " translates to a literal tab, not an interpreted tab to start expansion. To
@@ -470,3 +499,4 @@ nnoremap <F10> :echomsg
       \ . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
       \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
       \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+"}}}
