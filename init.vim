@@ -204,7 +204,7 @@ let g:netrw_browse_split = 0 " open a file in the same window as the explorer
 " --------------------------------------------
 " --------------------------------------------
 
-" ** VIM-DIRVISH
+" ** VIM-DIRVISH **
 "{{{
 let g:dirvish_mode = ':sort ,^.*[\/],'
 noremap <silent> <Leader>f :Dirvish<cr>
@@ -374,6 +374,12 @@ nmap <leader>rn <Plug>(coc-rename)
 " use `:OR` for organize import of current buffer
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
+augroup updateCocShowSignature
+  autocmd!
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
 " Using CocList
 " Show all diagnostics
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<CR>
@@ -433,16 +439,9 @@ augroup end
 
 augroup typescriptGroup
   autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setlocal formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-  " Format comments in .json files
-  autocmd FileType json syntax match Comment +\/\/.\+$+
   " tsconfig.json is actually jsonc, set the correct filetype to allow comments
   autocmd BufRead,BufNewFile tsconfig.*json set filetype=jsonc
 
-  autocmd BufNewFile,BufRead *.tsx let b:tsx_ext_found = 1
   autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
 augroup end
 
